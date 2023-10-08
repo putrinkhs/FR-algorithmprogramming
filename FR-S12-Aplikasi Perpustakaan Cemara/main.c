@@ -3,6 +3,7 @@
 
 #define MAX_BUKU 100
 
+// Struktur data untuk menyimpan informasi buku
 struct Buku {
     char judul[100];
     char pengarang[50];
@@ -10,19 +11,21 @@ struct Buku {
     int stok;
 };
 
+// Struktur data untuk menyimpan informasi transaksi
 struct Transaksi {
     char judul[100];
     char tipe_transaksi[20]; // "Peminjaman" atau "Pengembalian"
 };
 
+// Deklarasi array untuk daftar buku dan riwayat transaksi
 struct Buku daftar_buku[MAX_BUKU];
 struct Transaksi riwayat_transaksi[MAX_BUKU];
 int jumlah_buku = 0;
 int jumlah_transaksi = 0;
-    
+
+// Fungsi untuk menambahkan buku ke daftar buku
 void tambah_buku() {
     if (jumlah_buku < MAX_BUKU) {
-    
         printf("Masukkan judul buku: ");
         scanf("%s", daftar_buku[jumlah_buku].judul);
         printf("Masukkan pengarang buku: ");
@@ -38,6 +41,7 @@ void tambah_buku() {
     }
 }
 
+// Fungsi untuk menampilkan daftar buku
 void tampilkan_daftar_buku() {
     printf("Daftar Buku:\n");
     for (int i = 0; i < jumlah_buku; i++) {
@@ -45,6 +49,7 @@ void tampilkan_daftar_buku() {
     }
 }
 
+// Fungsi untuk menghapus buku dari daftar buku
 void hapus_buku() {
     int index;
     printf("Masukkan nomor buku yang ingin dihapus: ");
@@ -59,10 +64,11 @@ void hapus_buku() {
         jumlah_buku--;
         printf("Selamat, Buku berhasil dihapus!\n");
     } else {
-        printf("Maaf, Nomor buku tidak valid!\n");
+        printf("Maaf, Nomor buku tidak valid.\n");
     }
 }
 
+// Fungsi untuk menambahkan transaksi (peminjaman atau pengembalian)
 void tambah_transaksi() {
     char judul[100];
     printf("Masukkan judul buku yang ingin dipinjam atau dikembalikan: ");
@@ -92,7 +98,7 @@ void tambah_transaksi() {
                 jumlah_transaksi++;
                 printf("Selamat, Transaksi Pengembalian berhasil!\n");
             } else {
-                printf("Maaf, Tipe transaksi tidak valid!\n");
+                printf("Maaf, Tipe transaksi tidak valid.\n");
             }
             return;
         }
@@ -100,6 +106,7 @@ void tambah_transaksi() {
     printf("Maaf, Buku dengan judul tersebut tidak ditemukan.\n");
 }
 
+// Fungsi untuk menampilkan riwayat transaksi
 void tampilkan_riwayat_transaksi() {
     printf("Riwayat Transaksi:\n");
     for (int i = 0; i < jumlah_transaksi; i++) {
@@ -110,6 +117,7 @@ void tampilkan_riwayat_transaksi() {
 int main() {
     int pilihan;
     do {
+
         printf("\nMenu:\n");
         printf("1. Tambah Buku\n");
         printf("2. Tampilkan Daftar Buku\n");
@@ -140,7 +148,7 @@ int main() {
                 printf("Terima kasih telah menggunakan Aplikasi Perpustakaan Cemara. Sampai jumpa!\n");
                 break;
             default:
-                printf("Maaf, Pilihan tidak valid. Silakan pilih menu yang benar!\n");
+                printf("Maaf, Pilihan tidak valid. Silakan pilih menu yang benar.\n");
         }
     } while (pilihan != 6);
 
