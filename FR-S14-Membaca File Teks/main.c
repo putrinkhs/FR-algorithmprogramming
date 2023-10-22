@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// Fungsi untuk membaca dan menampilkan data dari file teks
-void readAndDisplayData() {
+int main() {
     FILE *file;
     char line[100];  // Maksimum panjang baris
     char *token;
@@ -12,12 +11,8 @@ void readAndDisplayData() {
 
     if (file == NULL) {
         printf("Gagal membuka file.\n");
-        return;
+        return 1;
     }
-
-    printf("=====================================\n");
-    printf("PROGRAM MEMBACA FILE TEKS\n");
-    printf("=====================================\n");
 
     // Membaca dan menampilkan setiap baris dalam file
     while (fgets(line, sizeof(line), file)) {
@@ -37,16 +32,11 @@ void readAndDisplayData() {
         printf("Nama Belakang: %s\n", full_name);
 
         token = strtok(NULL, "\n");  // Membaca jumlah uang
-        printf("Jumlah Uang: %s\n");
-
-        printf("=====================================\n");
+        printf("Jumlah Uang: %s\n", token);
     }
 
-    // Menutup file setelah selesai membaca
+    // Menutup file setelah selesai membacanya
     fclose(file);
-}
 
-int main() {
-    readAndDisplayData();
     return 0;
 }
